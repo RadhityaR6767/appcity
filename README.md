@@ -9,7 +9,7 @@ This example has been tested in a fully-isolated linux environment using [Linux 
 This solution uses [Python Flask](https://flask.palletsprojects.com/en/2.3.x/installation/) as the main app, and [Elasticsearch](https://www.elastic.co/) as a database.
 
 ## Build and Push Image into Registry
-Before we proceed to the build step. We need to login to [Docker Hub](https://hub.docker.com).
+Before we proceed to the build step. You need to login to [Docker Hub](https://hub.docker.com).
 
 ```shell
 docker login --username <account_name> --password <account_password>
