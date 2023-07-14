@@ -134,6 +134,7 @@ If those all run normally, you can try to access some endpoints. Here, I use `No
 | `http://<<ip_node>>:30050/city`    | DELETE      | { 'city': city }                           |
 | `http://<<ip_node>>:30050/city`    | GET         | { 'city': city }                           |
 
+##
 
 [OPTIONAL] You can destroy the database server by running this command:
 
