@@ -54,6 +54,7 @@ Before we proceed to the `helm chart`, you must have a running kubernetes. Setti
 Run the following command to create the deployments and services:
 
 ```
+cd chart-myapp
 helm install cityapp . -n city-app --create-namespace
 ```
 
@@ -84,6 +85,7 @@ helm search repo elasticsearch
 To install the elasticsearch, you can run the helm chart like this:
 
 ```
+cd chart-es
 helm install es elastic/elasticsearch -f ./values.yaml -n es --create-namespace
 ```
 
