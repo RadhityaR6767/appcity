@@ -8,7 +8,7 @@ This example has been tested in a fully-isolated linux environment using [Linux 
 
 This solution uses [Python Flask](https://flask.palletsprojects.com/en/2.3.x/installation/) as the main app, and [Elasticsearch](https://www.elastic.co/) as a database.
 
-## Build and Push The Image into Registry
+## Build and Push Image into Registry
 Run in this directory to build an image:
 
 ```shell
