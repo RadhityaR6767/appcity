@@ -33,7 +33,7 @@ After a successful login, I need to tag the image. The tag has an advantage to m
  docker tag cityapp:v1.0.0 rchronic/cityapp:v1.0.0
 ```
 
-This tag has some rules to follow. The first `cityapp:v1.0.0` comes from `docker build` that we run at the first time. The `rchronic` is my docker project on `docker hub`. The last `cityapp` is my repository on `docker hub`. And the last ‘v1.0.0’ is the image version.
+This tag has some rules to follow. The first `"cityapp:v1.0.0"` comes from `"docker build"` that we run at the first time. The `"rchronic"` is my docker account on docker hub. The last `"cityapp"` is my repository on docker hub. And the last ‘v1.0.0’ is the image version.
 
 Push the tagged image:
 
