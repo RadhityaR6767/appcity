@@ -16,7 +16,8 @@ docker build -t cityapp:v1.0.0 .
 
 It will trigger the build by looking into the Dockerfile. The image will be saved on your local computer / laptop.
 
-Next, we want to save this image to a container registry so that we can use it later. I use [Docker Hub](https://hub.docker.com) as a container registry. 
+Next, we want to save this image to a container registry so that we can use it later. 
+I use [Docker Hub](https://hub.docker.com) as a container registry. 
 
 Before I can push the image to the docker hub, I need to login first.
 
@@ -38,9 +39,9 @@ Push the tagged image:
 docker push rchronic/cityapp:v1.0.0
 ```
 
-This `rchronic/cityapp:v1.0.0` comes from the tag. You need to wait until its finish
+This `rchronic/cityapp:v1.0.0` comes from the tag. You need to wait until it finishes its job.
 
-Build and Push the app done!
+Build and Push app done!!!
 
 ## Run the app in Kubernetes
 
