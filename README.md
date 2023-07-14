@@ -27,7 +27,7 @@ Before I can push the image to the docker hub, I need to login first.
 docker login --username <account_name> --password <account_password>
 ```
 
-After a successful login, I need to tag the image. The tag has an advantage to mark your image so docker knows where the image will be:
+After a successful login, I need to tag the image. The tag has an advantage to mark your image so docker knows where the image will be stored:
 
 ```
  docker tag cityapp:v1.0.0 rchronic/cityapp:v1.0.0
