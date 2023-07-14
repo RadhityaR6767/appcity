@@ -45,7 +45,7 @@ This `rchronic/cityapp:v1.0.0` comes from the tag. You need to wait until it fin
 
 #### . . . Build and Push app done!!!
 
-## Run the app in Kubernetes
+## Run the app on Kubernetes
 
 It’s time to push our app to the server. Here, I will be using a [Helm Chart](https://helm.sh).
 
