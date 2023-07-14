@@ -11,6 +11,7 @@ This solution uses [Python Flask](https://flask.palletsprojects.com/en/2.3.x/ins
 Run in this directory to build an image:
 
 ```shell
+cd myapp
 docker build -t cityapp:v1.0.0 .
 ```
 
@@ -25,7 +26,7 @@ Before I can push the image to the docker hub, I need to login first.
 docker login --username <account_name> --password <account_password>
 ```
 
-After a successful login, I need to tag the image. The tag has an advantage to mark your image so docker knows where this image will arrive:
+After a successful login, I need to tag the image. The tag has an advantage to mark your image so docker knows where the image will be:
 
 ```
  docker tag cityapp:v1.0.0 rchronic/cityapp:v1.0.0
@@ -41,7 +42,7 @@ docker push rchronic/cityapp:v1.0.0
 
 This `rchronic/cityapp:v1.0.0` comes from the tag. You need to wait until it finishes its job.
 
-Build and Push app done!!!
+### Build and Push app done!!!
 
 ## Run the app in Kubernetes
 
