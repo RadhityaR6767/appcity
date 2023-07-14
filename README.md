@@ -133,7 +133,7 @@ If those all run normally, you can try to access some endpoints. Here, I use `No
 | `http://<<ip_node>>:30050/city`    | GET         | { 'city': city }                           |
 
 
-[OPTIONAL] You can destroy the database by running this command:
+[OPTIONAL] You can destroy the database server by running this command:
 
 ```
 helm -n es uninstall es && kubectl delete ns es && k delete -f pv-0.yaml
