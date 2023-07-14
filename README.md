@@ -59,6 +59,7 @@ That’s it!!! Now our app is on kubernetes
 
 #### . . . Deploy App Done!!!
 
+##
 
 [OPTIONAL] To remove the app from the server:
 
