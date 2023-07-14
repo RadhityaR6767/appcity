@@ -9,47 +9,43 @@ This example has been tested in a fully-isolated linux environment using [Linux 
 This solution uses [Python Flask](https://flask.palletsprojects.com/en/2.3.x/installation/) as the main app, and [Elasticsearch](https://www.elastic.co/) as a database.
 
 ## Build and Push Image into Registry
-Run in this directory to build an image:
-
-```shell
-cd myapp
-docker build -t cityapp:v1.0.0 .
-```
-
-It will trigger the build by looking into the Dockerfile. The image will be saved on your local machine.
-
-Next, we want to save this image to a container registry so that we can use it later. 
-I use [Docker Hub](https://hub.docker.com) as a container registry. 
-
-Before I can push the image to the docker hub, I need to login first.
+Before we proceed to the build step. We need to login to [Docker Hub](https://hub.docker.com).
 
 ```shell
 docker login --username <account_name> --password <account_password>
 ```
 
-After a successful login, I need to tag the image. The tag has an advantage to mark your image so docker knows where the image will be stored:
+Run in this directory to build an image and push the image to the registry:
 
-```
- docker tag cityapp:v1.0.0 rchronic/cityapp:v1.0.0
-```
-
-This tag has some rules to follow. The first `"cityapp:v1.0.0"` comes from `"docker build"` that we run at the first time. The `"rchronic"` is my docker account on docker hub. The last `"cityapp"` is my repository on docker hub. And the last ‘v1.0.0’ is the image version.
-
-Push the tagged image:
-
-```
-docker push rchronic/cityapp:v1.0.0
+```shell
+cd myapp
+./buildpush.sh 1.4.0
 ```
 
-This `rchronic/cityapp:v1.0.0` comes from the tag. You need to wait until it finishes its job.
+It will trigger the docker build by looking into the Dockerfile. The image will be saved on your local machine. And then, the image will be tagged so that it can be pushed to the registry. The tag has an advantage to mark your image so docker knows where the image will be stored.
 
-#### . . . Build and Push app done!!!
+You need to wait until it finishes its job.
+
+#### . . . Build and Push App Done!!!
 
 ## Run the app on Kubernetes
 
-It’s time to push our app to the server. Here, I will be using a [Helm Chart](https://helm.sh).
+It’s time to deploy our app to the server. Here, I will be using a [Helm Chart](https://helm.sh).
 
-Before we proceed to the `helm chart`, you must have a running kubernetes. Setting the kubectl to appropriate kubernetes API makes the `helm chart` to work.
+Before we proceed to the `helm chart`, you must have a running kubernetes cluster. I configure my pc to have this setting:
+
+| NODES                 | CPU      | MEMORY    |
+|-----------------------|----------|-----------|
+| `1 MASTER NODE`       | 4core    | 4096MB    |
+| `1 WORKER NODE`       | 4core    | 4096MB    |
+
+Setting the kubectl to appropriate kubernetes API makes the `helm chart` to work.
+
+Go back to previous dir:
+
+```
+cd ..
+```
 
 Run the following command to create the deployments and services:
 
@@ -65,6 +61,8 @@ That’s it!!! Now our app is on kubernetes
 ```
 helm -n city-app uninstall cityapp && kubectl delete ns city-app
 ```
+
+#### . . . Deploy App Done!!!
 
 ## Using Elasticsearch as the database
 
@@ -82,6 +80,12 @@ Check the latest version of a specific package that you want to use:
 helm search repo elasticsearch
 ```
 
+Go back to previous dir:
+
+```
+cd ..
+```
+
 To install the elasticsearch, you can run the helm chart like this:
 
 ```
@@ -89,7 +93,7 @@ cd chart-es
 helm install es elastic/elasticsearch -f ./values.yaml -n es --create-namespace
 ```
 
-It will pull an "elasticsearch" chart from `https://helm.elastic.co`, then the values.yaml will override some of the content. Also this will create a new `Kubernetes Namespace` called `es` if it doesn’t exist.
+It pulls an "elasticsearch" chart from `https://helm.elastic.co`, then the values.yaml will override some of the config fields. Also this created a new `Kubernetes Namespace` called `es` if it doesn’t exist.
 
 Because I run this app on top of Kubernetes Vanilla using Kubeadm, I need other storage to save the data. So I take a `Persistent Volume` manifest yaml file, and then apply it with this:
 
@@ -119,11 +123,17 @@ kubectl -n es get pod
 
 If those all run normally, you can try to access some endpoints. Here, I use `NodePort Service` so you can access the app by accessing `Node IP`:`Node Port`.
 
-| URL                                           | METHOD      | BODY                                       |
-|-----------------------------------------------|-------------|--------------------------------------------|
-| `http://<<ip_node>>:30050/health`           | GET         |                                            |
-| `http://<<ip_node>>:30050/city`             | POST        | { 'city': city, 'population': population } |
-| `http://<<ip_node>>:30050/city/<city_name>` | PUT         | { 'population': population }               |
-| `http://<<ip_node>>:30050/city/<city_name>` | DELETE      |                                            |
-| `http://<<ip_node>>:30050/city/<city_name>` | GET         |                                            |
+| URL                                | METHOD      | BODY                                       |
+|------------------------------------|-------------|--------------------------------------------|
+| `http://<<ip_node>>:30050/health`  | GET         |                                            |
+| `http://<<ip_node>>:30050/city`    | POST        | { 'city': city, 'population': population } |
+| `http://<<ip_node>>:30050/city`    | PUT         | { 'city': city, 'population': population } |
+| `http://<<ip_node>>:30050/city`    | DELETE      | { 'city': city }                           |
+| `http://<<ip_node>>:30050/city`    | GET         | { 'city': city }                           |
 
+
+[OPTIONAL] You can destroy the database by running this command:
+
+```
+helm -n es uninstall es && kubectl delete ns es && k delete -f pv-0.yaml
+```
