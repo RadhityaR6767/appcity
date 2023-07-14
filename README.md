@@ -4,7 +4,7 @@ A simple container application for CRUDing a city and its population.
 
 ## Getting Started
 
-In this example, it generates a fully-isolated linux environment using [Linux KVM](https://www.linux-kvm.org/page/Downloads) and [Kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/). But another environment would be applied well.
+In this example, I used a fully-isolated linux environment using [Linux KVM](https://www.linux-kvm.org/page/Downloads) and [Kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/). But another environment would be applied well.
 
 This solution uses [Python Flask](https://flask.palletsprojects.com/en/2.3.x/installation/) as the main app, and [Elasticsearch](https://www.elastic.co/) as a database.
 
@@ -85,9 +85,9 @@ Run the helm chart like this:
 helm install es elastic/elasticsearch -f ./values.yaml -n es --create-namespace
 ```
 
-It will get a package from `helm.elastic.co`, then the values.yaml will override some of the content. Also this will create a new kubernetes namespace called `es` if it doesn’t exist.
+It will get a package from `helm.elastic.co`, then the values.yaml will override some of the content. Also this will create a new `Kubernetes Mamespace` called `es` if it doesn’t exist.
 
-Because I run this app on top of kubernetes vanilla, I need other storage to save the data. So I take a Persistent Volume manifest yaml file, and then apply it:
+Because I run this app on top of Kubernetes Vanilla, I need other storage to save the data. So I take a `Persistent Volume` manifest yaml file, and then apply it:
 
 ```
 kubectl apply -f pv-0.yaml 
@@ -101,13 +101,13 @@ Check the status of persistent volume:
 kubectl get pv
 ```
 
-Check the status of persistent volume claim in namespace ‘es’:
+Check the status of persistent volume claim in namespace `es`:
 
 ```
 kubectl -n es get pvc
 ```
 
-Check the status of pod in namespace ‘es’:
+Check the status of pod in namespace `es`:
 
 ```
 kubectl -n es get pod
