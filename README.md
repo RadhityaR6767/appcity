@@ -65,7 +65,7 @@ That’s it!!! Now our app is on kubernetes
 helm -n city-app uninstall cityapp && kubectl delete ns city-app
 ```
 
-## Install the Database Using Elasticsearch
+## Using Elasticsearch as the database
 
 Installing the elasticsearch needs an additional repo from its [Official Elasticsearch Helm Chart](https://artifacthub.io/packages/helm/elastic/elasticsearch):
 
