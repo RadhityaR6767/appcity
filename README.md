@@ -4,7 +4,7 @@ A simple container application for CRUDing a city and its population.
 
 ## Getting Started
 
-In this example, I used a fully-isolated linux environment using [Linux KVM](https://www.linux-kvm.org/page/Downloads) and [Kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/). But another environment would be applied well.
+This example has been tested in a fully-isolated linux environment using [Linux KVM](https://www.linux-kvm.org/page/Downloads) and [Kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/). It appears that it could also be applied in other settings.
 
 This solution uses [Python Flask](https://flask.palletsprojects.com/en/2.3.x/installation/) as the main app, and [Elasticsearch](https://www.elastic.co/) as a database.
 
