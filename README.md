@@ -115,11 +115,11 @@ kubectl -n es get pod
 
 If those all run normally, you can try to access some endpoints:
 
-| URL                                           | METHOD      |
-|-----------------------------------------------|-------------|
-| `http://<<ip_service>>:5000/health`           | GET         |
-| `http://<<ip_service>>:5000/city`             | POST        |
-| `http://<<ip_service>>:5000/city/<city_name>` | PUT         |
-| `http://<<ip_service>>:5000/city/<city_name>` | DELETE      |
-| `http://<<ip_service>>:5000/city/<city_name>` | GET         |
+| URL                                           | METHOD      | BODY                                       |
+|-----------------------------------------------|-------------|--------------------------------------------|
+| `http://<<ip_service>>:5000/health`           | GET         |                                            |
+| `http://<<ip_service>>:5000/city`             | POST        | { 'city': city, 'population': population } |
+| `http://<<ip_service>>:5000/city/<city_name>` | PUT         | { 'population': population }               |
+| `http://<<ip_service>>:5000/city/<city_name>` | DELETE      |                                            |
+| `http://<<ip_service>>:5000/city/<city_name>` | GET         |                                            |
 
