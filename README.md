@@ -115,7 +115,7 @@ Check the status of pod in namespace `es`:
 kubectl -n es get pod
 ```
 
-If those all run normally, you can try to access some endpoints. Here, I use `NodePort Service so you can access the app by accessing `Node IP`:`Node Port`:
+If those all run normally, you can try to access some endpoints. Here, I use `NodePort Service` so you can access the app by accessing `Node IP`:`Node Port`:
 
 | URL                                           | METHOD      | BODY                                       |
 |-----------------------------------------------|-------------|--------------------------------------------|
