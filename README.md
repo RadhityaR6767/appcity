@@ -62,11 +62,15 @@ helm install cityapp . -n city-app --create-namespace
 
 That’s it!!! Now our app is on kubernetes
 
-[OPTIONAL] To remove them from the server, you can use:
+[OPTIONAL] To remove the app from the server:
 
 ```
 helm -n city-app uninstall cityapp && kubectl delete ns city-app
 ```
+
+
+
+
 
 ## Install the Database Using Elasticsearch
 
