@@ -42,7 +42,11 @@ docker push rchronic/cityapp:v1.0.0
 
 This `rchronic/cityapp:v1.0.0` comes from the tag. You need to wait until it finishes its job.
 
-#### Build and Push app done!!!
+
+#### . . . Build and Push app done!!!
+
+
+
 
 ## Run the app in Kubernetes
 
