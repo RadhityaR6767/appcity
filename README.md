@@ -67,7 +67,7 @@ helm -n city-app uninstall cityapp && kubectl delete ns city-app
 
 ## Using Elasticsearch as the database
 
-Installing the elasticsearch needs an additional repo from its [Official Elasticsearch Helm Chart](https://artifacthub.io/packages/helm/elastic/elasticsearch):
+Installing elasticsearch needs an additional repo from its Official [Elasticsearch Helm Chart](https://artifacthub.io/packages/helm/elastic/elasticsearch):
 
 ```
 helm repo add elastic https://helm.elastic.co
@@ -81,21 +81,21 @@ Check the latest version of a specific package that you want to use:
 helm search repo elasticsearch
 ```
 
-Run the helm chart like this:
+To install the elasticsearch, you can run the helm chart like this:
 
 ```
 helm install es elastic/elasticsearch -f ./values.yaml -n es --create-namespace
 ```
 
-It will get a package from `helm.elastic.co`, then the values.yaml will override some of the content. Also this will create a new `Kubernetes Mamespace` called `es` if it doesn’t exist.
+It will pull an "elasticsearch" chart from `https://helm.elastic.co`, then the values.yaml will override some of the content. Also this will create a new `Kubernetes Namespace` called `es` if it doesn’t exist.
 
-Because I run this app on top of Kubernetes Vanilla, I need other storage to save the data. So I take a `Persistent Volume` manifest yaml file, and then apply it:
+Because I run this app on top of Kubernetes Vanilla using Kubeadm, I need other storage to save the data. So I take a `Persistent Volume` manifest yaml file, and then apply it with this:
 
 ```
 kubectl apply -f pv-0.yaml 
 ```
 
-Wait for a moment until the storage is bind to the app. You can run some various command to check that:
+Wait for a moment until the storage is bound to the app. You can run some various command to check the status:
 
 Check the status of persistent volume:
 
@@ -115,7 +115,7 @@ Check the status of pod in namespace `es`:
 kubectl -n es get pod
 ```
 
-If those all run normally, you can try to access some endpoints. Here, I use `NodePort Service`. You can access the app by accessing `Nodes IP`
+If those all run normally, you can try to access some endpoints. Here, I use `NodePort Service so you can access the app by accessing `Node IP`:`Node Port`:
 
 | URL                                           | METHOD      | BODY                                       |
 |-----------------------------------------------|-------------|--------------------------------------------|
