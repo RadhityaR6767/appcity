@@ -16,7 +16,7 @@ cd myapp
 docker build -t cityapp:v1.0.0 .
 ```
 
-It will trigger the build by looking into the Dockerfile. The image will be saved on your local computer / laptop.
+It will trigger the build by looking into the Dockerfile. The image will be saved on your local machine.
 
 Next, we want to save this image to a container registry so that we can use it later. 
 I use [Docker Hub](https://hub.docker.com) as a container registry. 
