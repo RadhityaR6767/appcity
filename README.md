@@ -115,13 +115,13 @@ Check the status of pod in namespace `es`:
 kubectl -n es get pod
 ```
 
-If those all run normally, you can try to access some endpoints:
+If those all run normally, you can try to access some endpoints. Here, I use `NodePort Service`. You can access the app by accessing `Nodes IP`
 
 | URL                                           | METHOD      | BODY                                       |
 |-----------------------------------------------|-------------|--------------------------------------------|
-| `http://<<ip_service>>:5000/health`           | GET         |                                            |
-| `http://<<ip_service>>:5000/city`             | POST        | { 'city': city, 'population': population } |
-| `http://<<ip_service>>:5000/city/<city_name>` | PUT         | { 'population': population }               |
-| `http://<<ip_service>>:5000/city/<city_name>` | DELETE      |                                            |
-| `http://<<ip_service>>:5000/city/<city_name>` | GET         |                                            |
+| `http://<<ip_node>>:30050/health`           | GET         |                                            |
+| `http://<<ip_node>>:30050/city`             | POST        | { 'city': city, 'population': population } |
+| `http://<<ip_node>>:30050/city/<city_name>` | PUT         | { 'population': population }               |
+| `http://<<ip_node>>:30050/city/<city_name>` | DELETE      |                                            |
+| `http://<<ip_node>>:30050/city/<city_name>` | GET         |                                            |
 
