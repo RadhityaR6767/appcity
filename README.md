@@ -39,7 +39,8 @@ Before we proceed to the `helm chart`, you must have a running kubernetes cluste
 | `1 MASTER NODE`       | 4core    | 4096MB    |
 | `1 WORKER NODE`       | 4core    | 4096MB    |
 
-Setting the kubectl to appropriate kubernetes API makes the `helm chart` to work.
+
+After that, you need to install a kubectl and then set its configuration to contain appropriate IP of the kubernetes API.
 
 Go back to previous dir:
 
